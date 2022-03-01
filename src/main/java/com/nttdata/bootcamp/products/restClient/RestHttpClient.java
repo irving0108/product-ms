@@ -22,7 +22,7 @@ public class RestHttpClient {
 	{
 		HttpRequest req = HttpRequest.newBuilder(URI.create(serviceURL+"/"+id)).GET().build();
 		HttpResponse<String> response = client.send(req, BodyHandlers.ofString());
-		System.out.println("Hey look, an http response " + response.body());
+		System.out.println("response " + response.body());
 		ObjectMapper objectMapper = new ObjectMapper();
 		Customer customerRsp = objectMapper.readValue(response.body(), Customer.class);
 		return customerRsp;
