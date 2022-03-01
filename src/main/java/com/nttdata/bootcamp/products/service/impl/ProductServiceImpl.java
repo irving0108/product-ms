@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Mono<Product> findByCustomerId(int id) {
+	public Flux<Product> findByCustomerId(int id) {
 		return operationRepository.findByidCustomer(id);
 	}
 

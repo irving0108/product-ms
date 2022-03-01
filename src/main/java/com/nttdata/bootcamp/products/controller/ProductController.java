@@ -56,9 +56,9 @@ public class ProductController {
 	
 	@GetMapping(value = "/customer/{id}")
 	@ResponseBody
-	public ResponseEntity<Mono<Product>> findByCustomerId(@PathVariable("id") int id){
-		Mono<Product> productmono = operationService.findByCustomerId(id);
-		return new ResponseEntity<Mono<Product>>(productmono, productmono != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+	public ResponseEntity<Flux<Product>> findByCustomerId(@PathVariable("id") int id){
+		Flux<Product> productmono = operationService.findByCustomerId(id);
+		return new ResponseEntity<Flux<Product>>(productmono, productmono != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 	}
 	
 	@DeleteMapping(value = "/{id}")

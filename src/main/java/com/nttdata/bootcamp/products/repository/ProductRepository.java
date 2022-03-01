@@ -5,9 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.nttdata.bootcamp.products.model.Product;
 
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 
 @Repository
 public interface ProductRepository extends ReactiveMongoRepository<Product, String>{
-	Mono<Product> findByidCustomer(int id);
+	Flux<Product> findByidCustomer(int id);
 }

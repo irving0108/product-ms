@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 public interface ProductService {
 	void createProduct(Product e);
 	Mono<Product> findByProductId(String id);
-	Mono<Product> findByCustomerId(int id);
+	Flux<Product> findByCustomerId(int id);
 	Flux<Product> findAllProduct();
 	Mono<Product> updateProduct(Product e);
     Mono<Void> deleteProduct(String id);
