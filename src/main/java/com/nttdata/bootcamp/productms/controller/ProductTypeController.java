@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products.controller;
+package com.nttdata.bootcamp.productms.controller;
 
 import java.util.Objects;
 
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nttdata.bootcamp.products.model.ProductType;
-import com.nttdata.bootcamp.products.service.ProductTypeService;
+import com.nttdata.bootcamp.productms.model.ProductType;
+import com.nttdata.bootcamp.productms.service.ProductTypeService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

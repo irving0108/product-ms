@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products.model;
+package com.nttdata.bootcamp.productms.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

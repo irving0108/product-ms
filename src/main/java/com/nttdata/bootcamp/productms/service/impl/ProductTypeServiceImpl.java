@@ -1,11 +1,11 @@
-package com.nttdata.bootcamp.products.service.impl;
+package com.nttdata.bootcamp.productms.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nttdata.bootcamp.products.model.ProductType;
-import com.nttdata.bootcamp.products.repository.ProductTypeRepository;
-import com.nttdata.bootcamp.products.service.ProductTypeService;
+import com.nttdata.bootcamp.productms.model.ProductType;
+import com.nttdata.bootcamp.productms.repository.ProductTypeRepository;
+import com.nttdata.bootcamp.productms.service.ProductTypeService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

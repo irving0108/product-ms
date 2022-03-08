@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products.controller;
+package com.nttdata.bootcamp.productms.controller;
 
 import java.util.Objects;
 
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nttdata.bootcamp.products.model.Product;
-import com.nttdata.bootcamp.products.service.ProductService;
+import com.nttdata.bootcamp.productms.model.Product;
+import com.nttdata.bootcamp.productms.service.ProductService;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,8 +31,8 @@ public class ProductController {
 	
 	@PostMapping("/create")
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createOperation(@RequestBody Product operation) {
-		operationService.createProduct(operation);
+	public Mono<String> createOperation(@RequestBody Product operation) {
+		return operationService.createProduct(operation);
 	}
 	
 	@PutMapping(value = "/{id}")

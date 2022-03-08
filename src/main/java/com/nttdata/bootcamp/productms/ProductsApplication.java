@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products;
+package com.nttdata.bootcamp.productms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

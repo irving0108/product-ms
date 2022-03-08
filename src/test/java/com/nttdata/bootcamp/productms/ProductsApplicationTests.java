@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products;
+package com.nttdata.bootcamp.productms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

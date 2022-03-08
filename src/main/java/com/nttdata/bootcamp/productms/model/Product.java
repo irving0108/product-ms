@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.products.model;
+package com.nttdata.bootcamp.productms.model;
 
 import java.util.Date;
 
@@ -22,9 +22,9 @@ import lombok.NoArgsConstructor;
 public class Product {
 	@Id
 	String id;
-	public int idCustomer;
-	public int idProduct;
+	int idCustomer;
+	int idProduct;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	@Field(targetType = FieldType.DATE_TIME)
-	Date takenAt;
+	Date createdAt;
 }

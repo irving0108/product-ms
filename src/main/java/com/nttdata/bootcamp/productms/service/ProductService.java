@@ -1,12 +1,12 @@
-package com.nttdata.bootcamp.products.service;
+package com.nttdata.bootcamp.productms.service;
 
-import com.nttdata.bootcamp.products.model.Product;
+import com.nttdata.bootcamp.productms.model.Product;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface ProductService {
-	void createProduct(Product e);
+	Mono<String> createProduct(Product e);
 	Mono<Product> findByProductId(String id);
 	Flux<Product> findByCustomerId(int id);
 	Flux<Product> findAllProduct();

@@ -1,6 +1,6 @@
-package com.nttdata.bootcamp.products.service;
+package com.nttdata.bootcamp.productms.service;
 
-import com.nttdata.bootcamp.products.model.ProductType;
+import com.nttdata.bootcamp.productms.model.ProductType;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
