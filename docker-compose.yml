@@ -1,0 +1,18 @@
+version: '1.0'
+services:
+  customerms:
+    image: nttdata/customer-ms:latest
+    ports:
+      - 9091:9091
+    depends_on:
+      - mongodb
+  productms:
+    image: nttdata/product-ms:latest
+    ports:
+      - 9092:9092
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017

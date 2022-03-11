@@ -1,5 +1,6 @@
 package com.nttdata.bootcamp.productms.restClient;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -9,7 +10,8 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class RestHttpClient {
-	private static final String serviceURL = "http://localhost:8080/customer";
+	@Value("${customer.types}")
+	private static String serviceURL;
 	
 	public Mono<Customer> getCustomerById(int id)
 	{
