@@ -1,17 +1,37 @@
 version: '2.4'
 services:
+  eurekaservicems:
+    image: nttdata/eureka-server-ms:latest
+    ports:
+      - 8761:8761
+  configserverms:
+    image: nttdata/config-server-ms:latest
+    ports:
+      - 9010:9010
+    depends_on:
+      - eurekaservicems
+  apigatewayms:
+    image: nttdata/api-gateway-ms:latest
+    ports:
+      - 9020:9020
+    depends_on:
+      - eurekaservicems
   customerms:
     image: nttdata/customer-ms:latest
     ports:
       - 9091:9091
     depends_on:
+      - configserverms
       - mongodb
+      - eurekaservicems
   productms:
     image: nttdata/product-ms:latest
     ports:
       - 9092:9092
     depends_on:
+      - configserverms
       - mongodb
+      - eurekaservicems
   mongodb:
     image: mongo:latest
     ports:
