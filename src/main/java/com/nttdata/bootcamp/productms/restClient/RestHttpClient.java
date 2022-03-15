@@ -10,8 +10,9 @@ import reactor.core.publisher.Mono;
 
 @Component
 public class RestHttpClient {
-	@Value("${customer.types}")
-	private static String serviceURL;
+	
+	@Value("${customer.ms.uri}")
+	private String serviceURL;
 	
 	public Mono<Customer> getCustomerById(int id)
 	{

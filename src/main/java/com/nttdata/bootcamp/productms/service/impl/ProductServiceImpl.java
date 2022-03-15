@@ -1,6 +1,9 @@
 package com.nttdata.bootcamp.productms.service.impl;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.nttdata.bootcamp.productms.bean.Customer;
@@ -25,9 +28,16 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductTypeService productTypeService;
 	
+	@Value("${customer.product.type.id}")
+	private int[] idProductsType;
+	
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public Mono<String> createProduct(Product e) {
 		Mono<Customer> tmpCustomer = restClient.getCustomerById(e.getIdCustomer());
+		if(!Arrays.asList(idProductsType).contains(e.getIdProduct())) {
+			return Mono.just("idProduct invalid!.");
+		}
 		return tmpCustomer.map(response -> {
 			productRepository.save(e).subscribe();
 			return "Product created successfully!!!.";
