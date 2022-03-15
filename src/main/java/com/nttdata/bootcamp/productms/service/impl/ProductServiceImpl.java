@@ -2,6 +2,8 @@ package com.nttdata.bootcamp.productms.service.impl;
 
 import java.util.Arrays;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class ProductServiceImpl implements ProductService{
+	
+	private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
 	@Autowired
 	ProductRepository productRepository;
@@ -34,12 +38,14 @@ public class ProductServiceImpl implements ProductService{
 	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public Mono<String> createProduct(Product e) {
+		logger.info("ProductServiceImpl - createProduct - INICIO");
 		Mono<Customer> tmpCustomer = restClient.getCustomerById(e.getIdCustomer());
 		if(!Arrays.asList(idProductsType).contains(e.getIdProduct())) {
 			return Mono.just("idProduct invalid!.");
 		}
 		return tmpCustomer.map(response -> {
 			productRepository.save(e).subscribe();
+			logger.info("ProductServiceImpl - createProduct - FIN");
 			return "Product created successfully!!!.";
 		}).switchIfEmpty(Mono.just("idCustomer invalid!."));
 	}
