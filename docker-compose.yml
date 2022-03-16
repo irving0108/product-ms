@@ -1,38 +1,80 @@
 version: '2.4'
+networks:
+  nttdata-network:
+  
+
 services:
-  eurekaservicems:
+  eureka-server-ms:
     image: nttdata/eureka-server-ms:latest
+    container_name: eureka-container
+    hostname: eureka-server-ms
+    healthcheck:
+      test: "exit 0"
     ports:
       - 8761:8761
-  configserverms:
+    networks:
+      - nttdata-network
+  config-server-ms:
     image: nttdata/config-server-ms:latest
+    container_name: config-container
+    hostname: config-server-ms
+    healthcheck:
+      test: "exit 0"
     ports:
       - 9010:9010
-    depends_on:
-      - eurekaservicems
-  apigatewayms:
+    networks:
+      - nttdata-network
+  api-gateway-ms:
     image: nttdata/api-gateway-ms:latest
+    container_name: api-gateway-container
+    hostname: api-gateway-ms
+    depends_on:
+      eureka-server-ms:
+        condition: service_healthy
     ports:
       - 9020:9020
     depends_on:
-      - eurekaservicems
-  customerms:
+      eureka-server-ms:
+        condition: service_started
+    networks:
+      - nttdata-network
+  customer-ms:
     image: nttdata/customer-ms:latest
+    container_name: customer-container
+    hostname: customer-ms
     ports:
       - 9091:9091
     depends_on:
-      - configserverms
-      - mongodb
-      - eurekaservicems
-  productms:
+      config-server-ms:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      eureka-server-ms:
+        condition: service_healthy
+    networks:
+      - nttdata-network
+  product-ms:
     image: nttdata/product-ms:latest
+    container_name: product-container
+    hostname: product-ms
     ports:
       - 9092:9092
     depends_on:
-      - configserverms
-      - mongodb
-      - eurekaservicems
+      config-server-ms:
+        condition: service_healthy
+      mongodb:
+        condition: service_healthy
+      eureka-server-ms:
+        condition: service_healthy
+    networks:
+      - nttdata-network
   mongodb:
     image: mongo:latest
+    container_name: mongodbcnt
+    hostname: mongodb
+    healthcheck:
+      test: "exit 0"
     ports:
       - 27017:27017
+    networks:
+      - nttdata-network
