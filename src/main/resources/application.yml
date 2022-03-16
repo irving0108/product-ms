@@ -5,7 +5,7 @@ spring:
     active:
     - dev
   config:
-    import: optional:configserver:http://localhost:9010
+    import: optional:configserver:http://config-server-ms:9010
   cloud:
     config:
       profile: dev
