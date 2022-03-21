@@ -7,7 +7,12 @@ import com.nttdata.bootcamp.productms.model.Product;
 
 import reactor.core.publisher.Flux;
 
+/**
+ * Repository de class Product.
+ * @version 1.0, 18/03/2022
+ * @author Irving Chero
+ */
 @Repository
 public interface ProductRepository extends ReactiveMongoRepository<Product, String>{
-	Flux<Product> findByidCustomer(int id);
+    Flux<Product> findByidCustomer(int id);
 }

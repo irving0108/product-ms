@@ -14,17 +14,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Clase Product.
+ * @version 1.0, 18/03/2022
+ * @author Irving Chero
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Document
 public class Product {
-	@Id
-	String id;
-	int idCustomer;
-	int idProduct;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-	@Field(targetType = FieldType.DATE_TIME)
-	Date createdAt;
+    @Id
+    String id;
+    int idCustomer;
+    int idProduct;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @Field(targetType = FieldType.DATE_TIME)
+    Date createdAt;
 }
